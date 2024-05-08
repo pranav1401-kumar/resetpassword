@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './App.css'; // Import CSS file for styling
 
 export default function ResetPassword() {
   const [token, setToken] = useState('');
@@ -48,38 +49,44 @@ export default function ResetPassword() {
   };
 
   return (
-    <div>
-      <h2>Reset Your Password</h2>
-      <form onSubmit={handleSubmit}>
-        {/* Hidden Field to Store Token */}
-        <input type="hidden" id="token" name="token" value={token} />
+    <div className="card">
+      <div className="card-body">
+        <h2>Reset Your Password</h2>
+        <form onSubmit={handleSubmit}>
+          {/* Hidden Field to Store Token */}
+          <input type="hidden" id="token" name="token" value={token} />
 
-        {/* Field for New Password */}
-        <label htmlFor="password">New Password:</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <br /><br />
+          {/* Field for New Password */}
+          <div className="form-group">
+            <label htmlFor="password">New Password:</label>
+            <input
+              type="password"
+              className="form-control"
+              id="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
 
-        {/* Field for Confirming New Password */}
-        <label htmlFor="confirmPassword">Confirm Password:</label>
-        <input
-          type="password"
-          id="confirmPassword"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-        />
-        <br /><br />
+          {/* Field for Confirming New Password */}
+          <div className="form-group">
+            <label htmlFor="confirmPassword">Confirm Password:</label>
+            <input
+              type="password"
+              className="form-control"
+              id="confirmPassword"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+          </div>
 
-        {/* Submit Button */}
-        <button type="submit">Reset Password</button>
-      </form>
+          {/* Submit Button */}
+          <button type="submit" className="btn btn-primary">Reset Password</button>
+        </form>
+      </div>
     </div>
   );
 }
